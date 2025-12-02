@@ -16,6 +16,16 @@ class ViewConference extends ViewRecord
         return true;
     }
 
+    public function getContentTabLabel(): ?string
+    {
+        return 'Conference';
+    }
+
+    public function getContentTabIcon(): ?string
+    {
+        return 'heroicon-o-calendar-days';
+    }
+
     protected function getHeaderActions(): array
     {
         return [

@@ -18,6 +18,10 @@ class TopicsRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    protected static ?string $title = 'Topics';
+
+    protected static ?string $icon = 'heroicon-o-rectangle-group';
+
     public function form(Form $form): Form
     {
         return $form

@@ -20,6 +20,10 @@ class SessionsRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'session_title';
 
+    protected static ?string $title = 'Sessions';
+
+    protected static ?string $icon = 'heroicon-o-presentation-chart-line';
+
     public function form(Form $form): Form
     {
         return $form

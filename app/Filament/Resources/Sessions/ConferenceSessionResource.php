@@ -24,6 +24,8 @@ class ConferenceSessionResource extends Resource
 
     protected static ?int $navigationSort = 180;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Form $form): Form
     {
         return ConferenceSessionForm::configure($form);
