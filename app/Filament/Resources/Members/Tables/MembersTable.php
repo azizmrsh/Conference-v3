@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Filament\Resources\Members\Tables;
+
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Table;
+
+class MembersTable
+{
+    public static function configure(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('first_name')
+                    ->label('First Name')
+                    ->searchable(),
+                TextColumn::make('last_name')
+                    ->label('Last Name')
+                    ->searchable(),
+                TextColumn::make('email')->searchable(),
+                TextColumn::make('phone')->label('Phone'),
+                TextColumn::make('type')
+                    ->label('Type')
+                    ->badge(),
+                IconColumn::make('is_active')
+                    ->boolean()
+                    ->label('Active'),
+            ])
+            ->filters([])
+            ->actions([
+                EditAction::make(),
+            ])
+            ->bulkActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+}
+
