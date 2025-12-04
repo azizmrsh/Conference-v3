@@ -25,4 +25,3 @@ class EditCorrespondence extends EditRecord
         return $data;
     }
 }
-

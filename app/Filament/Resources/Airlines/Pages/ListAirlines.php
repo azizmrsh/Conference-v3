@@ -17,4 +17,3 @@ class ListAirlines extends ListRecords
         ];
     }
 }
-

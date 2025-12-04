@@ -8,9 +8,10 @@ use App\Filament\Resources\PressReleases\Pages\ListPressReleases;
 use App\Filament\Resources\PressReleases\Schemas\PressReleaseForm;
 use App\Filament\Resources\PressReleases\Tables\PressReleasesTable;
 use App\Models\PressRelease;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class PressReleaseResource extends Resource
 {
     protected static ?string $model = PressRelease::class;

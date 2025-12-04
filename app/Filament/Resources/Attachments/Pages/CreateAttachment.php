@@ -9,4 +9,3 @@ class CreateAttachment extends CreateRecord
 {
     protected static string $resource = AttachmentResource::class;
 }
-

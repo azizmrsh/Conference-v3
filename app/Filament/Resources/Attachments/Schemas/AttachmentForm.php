@@ -32,7 +32,7 @@ class AttachmentForm
                         TextInput::make('attachable_type')->label('Attachable Type')->required(),
                         TextInput::make('attachable_id')->label('Attachable ID')->numeric()->required(),
                         TextInput::make('collection')->label('Collection')->required(),
-                        Select::make('uploaded_by')->label('Uploaded By')->relationship('uploader','name')->searchable()->preload(),
+                        Select::make('uploaded_by')->label('Uploaded By')->relationship('uploader', 'name')->searchable()->preload(),
                     ]),
 
                 Section::make('Meta Data')
@@ -43,5 +43,3 @@ class AttachmentForm
             ]);
     }
 }
-
-

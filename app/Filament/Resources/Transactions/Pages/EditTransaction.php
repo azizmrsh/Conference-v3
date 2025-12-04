@@ -17,4 +17,3 @@ class EditTransaction extends EditRecord
         ];
     }
 }
-

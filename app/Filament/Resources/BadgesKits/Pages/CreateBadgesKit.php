@@ -9,4 +9,3 @@ class CreateBadgesKit extends CreateRecord
 {
     protected static string $resource = BadgesKitResource::class;
 }
-

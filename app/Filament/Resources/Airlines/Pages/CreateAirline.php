@@ -9,4 +9,3 @@ class CreateAirline extends CreateRecord
 {
     protected static string $resource = AirlineResource::class;
 }
-

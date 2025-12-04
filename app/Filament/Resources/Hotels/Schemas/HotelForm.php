@@ -4,9 +4,8 @@ namespace App\Filament\Resources\Hotels\Schemas;
 
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 
 class HotelForm
@@ -35,5 +34,3 @@ class HotelForm
             ]);
     }
 }
-
-

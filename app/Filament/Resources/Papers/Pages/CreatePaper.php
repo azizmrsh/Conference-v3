@@ -9,4 +9,3 @@ class CreatePaper extends CreateRecord
 {
     protected static string $resource = PaperResource::class;
 }
-

@@ -17,4 +17,3 @@ class EditMember extends EditRecord
         ];
     }
 }
-

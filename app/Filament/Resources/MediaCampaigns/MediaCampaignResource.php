@@ -8,9 +8,10 @@ use App\Filament\Resources\MediaCampaigns\Pages\ListMediaCampaigns;
 use App\Filament\Resources\MediaCampaigns\Schemas\MediaCampaignForm;
 use App\Filament\Resources\MediaCampaigns\Tables\MediaCampaignsTable;
 use App\Models\MediaCampaign;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class MediaCampaignResource extends Resource
 {
     protected static ?string $model = MediaCampaign::class;

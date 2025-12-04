@@ -20,8 +20,8 @@ class CreateCorrespondence extends CreateRecord
         }
 
         // Auto-generate ref_number if not provided
-        if (empty($data['ref_number']) && !empty($data['category'])) {
-            $correspondence = new \App\Models\Correspondence();
+        if (empty($data['ref_number']) && ! empty($data['category'])) {
+            $correspondence = new \App\Models\Correspondence;
             $correspondence->category = $data['category'];
             $data['ref_number'] = $correspondence->generateRefNumber();
         }
@@ -29,4 +29,3 @@ class CreateCorrespondence extends CreateRecord
         return $data;
     }
 }
-

@@ -17,4 +17,3 @@ class ListConferences extends ListRecords
         ];
     }
 }
-

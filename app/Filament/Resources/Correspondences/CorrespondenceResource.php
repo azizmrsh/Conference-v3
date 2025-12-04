@@ -9,9 +9,10 @@ use App\Filament\Resources\Correspondences\Pages\ViewCorrespondence;
 use App\Filament\Resources\Correspondences\Schemas\CorrespondenceForm;
 use App\Filament\Resources\Correspondences\Tables\CorrespondencesTable;
 use App\Models\Correspondence;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class CorrespondenceResource extends Resource
 {
     protected static ?string $model = Correspondence::class;

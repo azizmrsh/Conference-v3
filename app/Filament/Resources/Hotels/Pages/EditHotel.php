@@ -17,4 +17,3 @@ class EditHotel extends EditRecord
         ];
     }
 }
-

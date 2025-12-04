@@ -9,7 +9,6 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
-use Illuminate\Validation\Rule;
 
 class TaskForm
 {
@@ -21,17 +20,17 @@ class TaskForm
                     ->icon('heroicon-o-clipboard-document-list')
                     ->columns(2)
                     ->schema([
-                        Select::make('conference_id')->label('Conference')->relationship('conference','title')->searchable()->preload(),
+                        Select::make('conference_id')->label('Conference')->relationship('conference', 'title')->searchable()->preload(),
                         Select::make('category')->label('Category')->options([
-                            'pre_conference'=>'Pre Conference',
-                            'invitation_management'=>'Invitation Management',
-                            'paper_management'=>'Paper Management',
-                            'logistics'=>'Logistics',
-                            'protocol'=>'Protocol',
-                            'media_campaign'=>'Media Campaign',
-                            'financial'=>'Financial',
-                            'during_conference'=>'During Conference',
-                            'post_conference'=>'Post Conference',
+                            'pre_conference' => 'Pre Conference',
+                            'invitation_management' => 'Invitation Management',
+                            'paper_management' => 'Paper Management',
+                            'logistics' => 'Logistics',
+                            'protocol' => 'Protocol',
+                            'media_campaign' => 'Media Campaign',
+                            'financial' => 'Financial',
+                            'during_conference' => 'During Conference',
+                            'post_conference' => 'Post Conference',
                         ])->required(),
                         TextInput::make('title')->label('Title')->required(),
                         TextInput::make('priority')->numeric()->minValue(1)->maxValue(5)->label('Priority'),
@@ -47,7 +46,7 @@ class TaskForm
                     ->icon('heroicon-o-calendar')
                     ->columns(2)
                     ->schema([
-                        Select::make('assigned_to')->label('Assigned To')->relationship('assignee','name')->searchable()->preload(),
+                        Select::make('assigned_to')->label('Assigned To')->relationship('assignee', 'name')->searchable()->preload(),
                         TextInput::make('department_responsible')->label('Department'),
                         DatePicker::make('start_date')->label('Start Date'),
                         DatePicker::make('due_date')->label('Due Date'),
@@ -59,7 +58,7 @@ class TaskForm
                     ->columns(2)
                     ->schema([
                         Select::make('status')->label('Status')->options([
-                            'not_started'=>'Not Started','in_progress'=>'In Progress','waiting'=>'Waiting','completed'=>'Completed','overdue'=>'Overdue','cancelled'=>'Cancelled'
+                            'not_started' => 'Not Started', 'in_progress' => 'In Progress', 'waiting' => 'Waiting', 'completed' => 'Completed', 'overdue' => 'Overdue', 'cancelled' => 'Cancelled',
                         ])->required(),
                         TextInput::make('completion_percentage')->numeric()->minValue(0)->maxValue(100)->label('Completion %'),
                     ]),
@@ -79,10 +78,8 @@ class TaskForm
                         Toggle::make('auto_reminder')->label('Auto Reminder')->default(true),
                         TextInput::make('reminder_schedule')->label('Reminder Schedule'),
                         Textarea::make('notes')->label('Notes')->columnSpanFull(),
-                        Select::make('created_by')->label('Created By')->relationship('creator','name')->searchable()->preload(),
+                        Select::make('created_by')->label('Created By')->relationship('creator', 'name')->searchable()->preload(),
                     ]),
             ]);
     }
 }
-
-

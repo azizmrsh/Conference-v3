@@ -17,4 +17,3 @@ class ListCommittees extends ListRecords
         ];
     }
 }
-

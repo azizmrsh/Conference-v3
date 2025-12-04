@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\Papers\Schemas;
 
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -56,7 +56,7 @@ class PaperForm
                                 'sent_to_print' => 'مرسل للطباعة',
                             ])
                             ->required()
-                            ->rule(Rule::in(['abstract_pending','abstract_accepted','full_paper_pending','under_review','modifications_required','accepted_final','sent_to_print']))
+                            ->rule(Rule::in(['abstract_pending', 'abstract_accepted', 'full_paper_pending', 'under_review', 'modifications_required', 'accepted_final', 'sent_to_print']))
                             ->columnSpanFull(),
                         DateTimePicker::make('submitted_at')->label('Submitted At'),
                         DateTimePicker::make('accepted_at')->label('Accepted At'),
@@ -65,4 +65,3 @@ class PaperForm
             ]);
     }
 }
-

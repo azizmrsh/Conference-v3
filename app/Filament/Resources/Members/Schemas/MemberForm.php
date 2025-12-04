@@ -46,7 +46,7 @@ class MemberForm
                             ])
                             ->required()
                             ->searchable()
-                            ->rule(Rule::in(['working_member','correspondent_member','honorary_member','guest_speaker','staff','journalist'])),
+                            ->rule(Rule::in(['working_member', 'correspondent_member', 'honorary_member', 'guest_speaker', 'staff', 'journalist'])),
                         DatePicker::make('membership_date')->label('Membership Date'),
                         Toggle::make('is_active')->label('Active')->default(true)->inline(false),
                     ]),
@@ -86,4 +86,3 @@ class MemberForm
             ]);
     }
 }
-

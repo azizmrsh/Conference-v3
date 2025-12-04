@@ -8,9 +8,10 @@ use App\Filament\Resources\TravelBookings\Pages\ListTravelBookings;
 use App\Filament\Resources\TravelBookings\Schemas\TravelBookingForm;
 use App\Filament\Resources\TravelBookings\Tables\TravelBookingsTable;
 use App\Models\TravelBooking;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class TravelBookingResource extends Resource
 {
     protected static ?string $model = TravelBooking::class;

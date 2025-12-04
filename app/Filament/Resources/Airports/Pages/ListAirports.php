@@ -17,4 +17,3 @@ class ListAirports extends ListRecords
         ];
     }
 }
-

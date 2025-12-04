@@ -8,9 +8,10 @@ use App\Filament\Resources\Committees\Pages\ListCommittees;
 use App\Filament\Resources\Committees\Schemas\CommitteeForm;
 use App\Filament\Resources\Committees\Tables\CommitteesTable;
 use App\Models\Committee;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class CommitteeResource extends Resource
 {
     protected static ?string $model = Committee::class;

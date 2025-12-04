@@ -23,8 +23,8 @@ class EditTravelBooking extends EditRecord
     {
         $type = $data['type'] ?? null;
 
-        if (in_array($type, ['arrival_flight','departure_flight'])) {
-            foreach (['airline_id','flight_number','flight_date','flight_time','airport_from_id','airport_to_id'] as $field) {
+        if (in_array($type, ['arrival_flight', 'departure_flight'])) {
+            foreach (['airline_id', 'flight_number', 'flight_date', 'flight_time', 'airport_from_id', 'airport_to_id'] as $field) {
                 if (empty($data[$field])) {
                     throw ValidationException::withMessages([
                         $field => 'الحقول الخاصة بالرحلة مطلوبة لنوع الحجز المختار.',
@@ -34,7 +34,7 @@ class EditTravelBooking extends EditRecord
         }
 
         if ($type === 'hotel') {
-            foreach (['hotel_id','room_type','check_in','check_out'] as $field) {
+            foreach (['hotel_id', 'room_type', 'check_in', 'check_out'] as $field) {
                 if (empty($data[$field])) {
                     throw ValidationException::withMessages([
                         $field => 'حقول الفندق مطلوبة عند اختيار نوع فندق.',
@@ -42,7 +42,7 @@ class EditTravelBooking extends EditRecord
                 }
             }
 
-            if (!empty($data['check_in']) && !empty($data['check_out'])) {
+            if (! empty($data['check_in']) && ! empty($data['check_out'])) {
                 $in = Carbon::parse($data['check_in']);
                 $out = Carbon::parse($data['check_out']);
                 if ($out->lt($in)) {
@@ -56,4 +56,3 @@ class EditTravelBooking extends EditRecord
         return $data;
     }
 }
-

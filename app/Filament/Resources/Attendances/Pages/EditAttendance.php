@@ -21,7 +21,7 @@ class EditAttendance extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        if (!empty($data['check_in_at']) && !empty($data['check_out_at'])) {
+        if (! empty($data['check_in_at']) && ! empty($data['check_out_at'])) {
             $in = Carbon::parse($data['check_in_at']);
             $out = Carbon::parse($data['check_out_at']);
             if ($out->lt($in)) {
@@ -34,4 +34,3 @@ class EditAttendance extends EditRecord
         return $data;
     }
 }
-

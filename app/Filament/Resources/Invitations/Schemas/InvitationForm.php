@@ -50,7 +50,7 @@ class InvitationForm
                                 'no_response' => 'بدون رد',
                             ])
                             ->required()
-                            ->rule(Rule::in(['nominated','invited','confirmed_attendance','apologized_attendance','apologized_writing','no_response'])),
+                            ->rule(Rule::in(['nominated', 'invited', 'confirmed_attendance', 'apologized_attendance', 'apologized_writing', 'no_response'])),
                         Select::make('role')
                             ->label('Role')
                             ->options([
@@ -61,7 +61,7 @@ class InvitationForm
                                 'guest_honor' => 'ضيف شرف',
                             ])
                             ->required()
-                            ->rule(Rule::in(['researcher','listener','session_chair','media','guest_honor'])),
+                            ->rule(Rule::in(['researcher', 'listener', 'session_chair', 'media', 'guest_honor'])),
                         DateTimePicker::make('invitation_sent_at')->label('Invitation Sent At'),
                         DateTimePicker::make('response_received_at')->label('Response Received At'),
                     ]),
@@ -115,4 +115,3 @@ class InvitationForm
             ]);
     }
 }
-

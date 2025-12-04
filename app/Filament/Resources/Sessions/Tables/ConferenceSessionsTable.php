@@ -61,4 +61,3 @@ class ConferenceSessionsTable
             ->defaultSort('session_order');
     }
 }
-

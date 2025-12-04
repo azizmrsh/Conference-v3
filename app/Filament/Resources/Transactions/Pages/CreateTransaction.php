@@ -9,4 +9,3 @@ class CreateTransaction extends CreateRecord
 {
     protected static string $resource = TransactionResource::class;
 }
-

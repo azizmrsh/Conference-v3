@@ -17,4 +17,3 @@ class EditBadgesKit extends EditRecord
         ];
     }
 }
-

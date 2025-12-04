@@ -17,4 +17,3 @@ class EditConferenceSession extends EditRecord
         ];
     }
 }
-

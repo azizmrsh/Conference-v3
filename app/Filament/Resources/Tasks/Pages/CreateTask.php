@@ -9,4 +9,3 @@ class CreateTask extends CreateRecord
 {
     protected static string $resource = TaskResource::class;
 }
-

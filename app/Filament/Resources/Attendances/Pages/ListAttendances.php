@@ -17,4 +17,3 @@ class ListAttendances extends ListRecords
         ];
     }
 }
-

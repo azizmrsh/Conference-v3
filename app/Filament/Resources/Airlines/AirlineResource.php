@@ -8,9 +8,10 @@ use App\Filament\Resources\Airlines\Pages\ListAirlines;
 use App\Filament\Resources\Airlines\Schemas\AirlineForm;
 use App\Filament\Resources\Airlines\Tables\AirlinesTable;
 use App\Models\Airline;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class AirlineResource extends Resource
 {
     protected static ?string $model = Airline::class;

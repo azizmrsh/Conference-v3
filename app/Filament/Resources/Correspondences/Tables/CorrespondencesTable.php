@@ -123,6 +123,23 @@ class CorrespondencesTable
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
 
+                IconColumn::make('attachments_count')
+                    ->label('Files')
+                    ->icon(fn ($record) => $record->hasAttachments() ? 'heroicon-o-paper-clip' : 'heroicon-o-x-mark')
+                    ->color(fn ($record) => $record->hasAttachments() ? 'success' : 'gray')
+                    ->tooltip(fn ($record) => $record->hasAttachments() ? $record->getAttachmentsCount().' file(s)' : 'No attachments')
+                    ->toggleable(),
+
+                IconColumn::make('has_pdf')
+                    ->label('PDF')
+                    ->boolean()
+                    ->state(fn ($record) => $record->hasPdf())
+                    ->trueIcon('heroicon-o-document-text')
+                    ->falseIcon('heroicon-o-x-mark')
+                    ->trueColor('success')
+                    ->falseColor('gray')
+                    ->toggleable(),
+
                 TextColumn::make('creator.name')
                     ->label('Created By')
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -237,12 +254,28 @@ class CorrespondencesTable
                 ReplicateAction::make()
                     ->excludeAttributes(['ref_number']),
 
+                Action::make('downloadAttachments')
+                    ->label('Download Files')
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->color('gray')
+                    ->visible(fn ($record) => $record->hasAttachments())
+                    ->url(fn ($record) => $record->getFirstMedia('attachments')?->getUrl())
+                    ->openUrlInNewTab(),
+
+                Action::make('viewPdf')
+                    ->label('View PDF')
+                    ->icon('heroicon-o-eye')
+                    ->color('info')
+                    ->visible(fn ($record) => $record->hasPdf())
+                    ->url(fn ($record) => $record->latestPdf())
+                    ->openUrlInNewTab(),
+
                 Action::make('generatePdf')
                     ->label('Generate PDF')
                     ->icon('heroicon-o-document-arrow-down')
                     ->color('success')
                     ->action(function ($record) {
-                        $pdfService = new CorrespondencePdfService();
+                        $pdfService = new CorrespondencePdfService;
                         $pdfPath = $pdfService->generatePdf($record);
 
                         Notification::make()
@@ -250,7 +283,7 @@ class CorrespondencesTable
                             ->success()
                             ->send();
 
-                        return response()->download(storage_path('app/public/' . $pdfPath));
+                        return response()->download(storage_path('app/public/'.$pdfPath));
                     }),
 
                 Action::make('sendEmail')
@@ -264,7 +297,7 @@ class CorrespondencesTable
                             ->required(),
                     ])
                     ->action(function ($record, array $data) {
-                        $pdfService = new CorrespondencePdfService();
+                        $pdfService = new CorrespondencePdfService;
                         $pdfService->generatePdf($record);
 
                         Mail::to($data['to_email'])->send(new CorrespondenceSent($record));
@@ -346,7 +379,7 @@ class CorrespondencesTable
                         ->label('Export PDFs')
                         ->icon('heroicon-o-arrow-down-tray')
                         ->action(function (Collection $records) {
-                            $pdfService = new CorrespondencePdfService();
+                            $pdfService = new CorrespondencePdfService;
 
                             foreach ($records as $record) {
                                 $pdfService->generatePdf($record);
@@ -354,7 +387,7 @@ class CorrespondencesTable
 
                             Notification::make()
                                 ->title('PDFs Generated')
-                                ->body(count($records) . ' PDFs created')
+                                ->body(count($records).' PDFs created')
                                 ->success()
                                 ->send();
                         }),
@@ -362,5 +395,3 @@ class CorrespondencesTable
             ]);
     }
 }
-
-

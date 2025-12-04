@@ -9,7 +9,6 @@ use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Storage;
 
 class CorrespondenceSent extends Mailable
 {
@@ -21,8 +20,7 @@ class CorrespondenceSent extends Mailable
     public function __construct(
         public Correspondence $correspondence,
         public ?string $additionalMessage = null
-    ) {
-    }
+    ) {}
 
     /**
      * Get the message envelope.
@@ -30,7 +28,7 @@ class CorrespondenceSent extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->correspondence->ref_number . ' - ' . $this->correspondence->sender_name,
+            subject: $this->correspondence->ref_number.' - '.$this->correspondence->sender_name,
         );
     }
 

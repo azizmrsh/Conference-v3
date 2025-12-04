@@ -18,9 +18,9 @@ class BadgesKitForm
                     ->icon('heroicon-o-identification')
                     ->columns(3)
                     ->schema([
-                        Select::make('conference_id')->label('Conference')->relationship('conference','title_ar')->searchable()->preload()->required(),
+                        Select::make('conference_id')->label('Conference')->relationship('conference', 'title_ar')->searchable()->preload()->required(),
                         Select::make('item_type')->label('Item Type')->options([
-                            'staff_badge'=>'Staff Badge','member_badge'=>'Member Badge','guest_badge'=>'Guest Badge','press_badge'=>'Press Badge','bag'=>'Bag','dvd'=>'DVD'
+                            'staff_badge' => 'Staff Badge', 'member_badge' => 'Member Badge', 'guest_badge' => 'Guest Badge', 'press_badge' => 'Press Badge', 'bag' => 'Bag', 'dvd' => 'DVD',
                         ])->required(),
                         Textarea::make('description')->label('Description')->columnSpanFull(),
                         TextInput::make('quantity')->label('Quantity')->numeric()->minValue(0)->required(),
@@ -29,5 +29,3 @@ class BadgesKitForm
             ]);
     }
 }
-
-

@@ -9,4 +9,3 @@ class CreateMediaCampaign extends CreateRecord
 {
     protected static string $resource = MediaCampaignResource::class;
 }
-

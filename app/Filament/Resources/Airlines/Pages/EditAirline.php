@@ -17,4 +17,3 @@ class EditAirline extends EditRecord
         ];
     }
 }
-

@@ -17,4 +17,3 @@ class ListMediaCampaigns extends ListRecords
         ];
     }
 }
-

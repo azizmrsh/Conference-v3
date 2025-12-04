@@ -9,4 +9,3 @@ class CreateConference extends CreateRecord
 {
     protected static string $resource = ConferenceResource::class;
 }
-

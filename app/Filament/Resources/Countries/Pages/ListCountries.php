@@ -17,4 +17,3 @@ class ListCountries extends ListRecords
         ];
     }
 }
-

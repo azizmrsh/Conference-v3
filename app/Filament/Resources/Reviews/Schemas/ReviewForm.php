@@ -21,10 +21,10 @@ class ReviewForm
                     ->icon('heroicon-o-clipboard-document-list')
                     ->columns(3)
                     ->schema([
-                        Select::make('paper_id')->label('Paper')->relationship('paper','title_ar')->searchable()->preload()->required(),
-                        Select::make('reviewer_user_id')->label('Reviewer')->relationship('reviewer','name')->searchable()->preload(),
+                        Select::make('paper_id')->label('Paper')->relationship('paper', 'title_ar')->searchable()->preload()->required(),
+                        Select::make('reviewer_user_id')->label('Reviewer')->relationship('reviewer', 'name')->searchable()->preload(),
                         Select::make('review_type')->label('Type')->options([
-                            'scientific_review'=>'Scientific','linguistic_review'=>'Linguistic','technical_review'=>'Technical','final_review'=>'Final'
+                            'scientific_review' => 'Scientific', 'linguistic_review' => 'Linguistic', 'technical_review' => 'Technical', 'final_review' => 'Final',
                         ])->required(),
                         TextInput::make('review_round')->label('Round')->numeric()->minValue(1)->default(1),
                         DateTimePicker::make('assigned_at')->label('Assigned At')->required(),
@@ -47,15 +47,13 @@ class ReviewForm
                     ->icon('heroicon-o-check-badge')
                     ->columns(2)
                     ->schema([
-                        Select::make('recommendation')->label('Recommendation')->options(['accept'=>'Accept','accept_with_minor'=>'Accept w/ Minor','major_revision'=>'Major Revision','reject'=>'Reject'])->required(),
-                        Select::make('status')->label('Status')->options(['assigned'=>'Assigned','in_progress'=>'In Progress','completed'=>'Completed','overdue'=>'Overdue','cancelled'=>'Cancelled'])->required(),
+                        Select::make('recommendation')->label('Recommendation')->options(['accept' => 'Accept', 'accept_with_minor' => 'Accept w/ Minor', 'major_revision' => 'Major Revision', 'reject' => 'Reject'])->required(),
+                        Select::make('status')->label('Status')->options(['assigned' => 'Assigned', 'in_progress' => 'In Progress', 'completed' => 'Completed', 'overdue' => 'Overdue', 'cancelled' => 'Cancelled'])->required(),
                         Textarea::make('general_comments')->label('Comments')->columnSpanFull(),
                         TextInput::make('annotated_file_path')->label('Annotated File'),
                         Toggle::make('confidential')->label('Confidential')->default(true),
-                        Select::make('created_by')->label('Created By')->relationship('creator','name')->searchable()->preload(),
+                        Select::make('created_by')->label('Created By')->relationship('creator', 'name')->searchable()->preload(),
                     ]),
             ]);
     }
 }
-
-

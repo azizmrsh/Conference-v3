@@ -17,4 +17,3 @@ class ListPapers extends ListRecords
         ];
     }
 }
-

@@ -3,14 +3,14 @@
 namespace App\Filament\Resources\Conferences\RelationManagers;
 
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\CreateAction;
-use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Forms\Form;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class TopicsRelationManager extends RelationManager
 {
@@ -29,7 +29,7 @@ class TopicsRelationManager extends RelationManager
                 TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                
+
                 TextInput::make('order')
                     ->numeric()
                     ->default(0)
@@ -44,12 +44,12 @@ class TopicsRelationManager extends RelationManager
                 TextColumn::make('title')
                     ->searchable()
                     ->sortable(),
-                
+
                 TextColumn::make('sessions_count')
                     ->counts('sessions')
                     ->label('Sessions')
                     ->alignCenter(),
-                
+
                 TextColumn::make('order')
                     ->sortable()
                     ->alignCenter(),

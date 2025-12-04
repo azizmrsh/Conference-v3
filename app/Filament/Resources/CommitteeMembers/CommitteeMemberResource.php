@@ -8,9 +8,10 @@ use App\Filament\Resources\CommitteeMembers\Pages\ListCommitteeMembers;
 use App\Filament\Resources\CommitteeMembers\Schemas\CommitteeMemberForm;
 use App\Filament\Resources\CommitteeMembers\Tables\CommitteeMembersTable;
 use App\Models\CommitteeMember;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class CommitteeMemberResource extends Resource
 {
     protected static ?string $model = CommitteeMember::class;

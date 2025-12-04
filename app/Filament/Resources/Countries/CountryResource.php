@@ -8,9 +8,10 @@ use App\Filament\Resources\Countries\Pages\ListCountries;
 use App\Filament\Resources\Countries\Schemas\CountryForm;
 use App\Filament\Resources\Countries\Tables\CountriesTable;
 use App\Models\Country;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class CountryResource extends Resource
 {
     protected static ?string $model = Country::class;

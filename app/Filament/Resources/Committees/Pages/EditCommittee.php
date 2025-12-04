@@ -17,4 +17,3 @@ class EditCommittee extends EditRecord
         ];
     }
 }
-

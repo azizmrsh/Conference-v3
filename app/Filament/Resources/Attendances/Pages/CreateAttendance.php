@@ -13,7 +13,7 @@ class CreateAttendance extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        if (!empty($data['check_in_at']) && !empty($data['check_out_at'])) {
+        if (! empty($data['check_in_at']) && ! empty($data['check_out_at'])) {
             $in = Carbon::parse($data['check_in_at']);
             $out = Carbon::parse($data['check_out_at']);
             if ($out->lt($in)) {
@@ -26,4 +26,3 @@ class CreateAttendance extends CreateRecord
         return $data;
     }
 }
-

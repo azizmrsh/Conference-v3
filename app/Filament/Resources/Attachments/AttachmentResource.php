@@ -8,9 +8,10 @@ use App\Filament\Resources\Attachments\Pages\ListAttachments;
 use App\Filament\Resources\Attachments\Schemas\AttachmentForm;
 use App\Filament\Resources\Attachments\Tables\AttachmentsTable;
 use App\Models\Attachment;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class AttachmentResource extends Resource
 {
     protected static ?string $model = Attachment::class;

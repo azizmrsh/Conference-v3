@@ -17,4 +17,3 @@ class ListAttachments extends ListRecords
         ];
     }
 }
-

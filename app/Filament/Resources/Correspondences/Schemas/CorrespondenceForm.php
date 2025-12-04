@@ -227,7 +227,7 @@ class CorrespondenceForm
                                             ->icon('heroicon-o-arrow-path')
                                             ->action(function (Set $set, Get $get) {
                                                 $category = $get('category');
-                                                if (!$category) {
+                                                if (! $category) {
                                                     return;
                                                 }
 
@@ -289,25 +289,44 @@ class CorrespondenceForm
                                     ->multiple()
                                     ->downloadable()
                                     ->openable()
+                                    ->reorderable()
+                                    ->appendFiles()
+                                    ->maxFiles(10)
+                                    ->maxSize(20480) // 20MB
+                                    ->acceptedFileTypes([
+                                        'application/pdf',
+                                        'image/*',
+                                        'application/msword',
+                                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                                    ])
+                                    ->image()
+                                    ->imageEditor()
+                                    ->imageEditorAspectRatios([
+                                        null,
+                                        '16:9',
+                                        '4:3',
+                                        '1:1',
+                                    ])
                                     ->columnSpanFull(),
 
-                                SpatieMediaLibraryFileUpload::make('pdf')
-                                    ->label('PDF Document')
-                                    ->collection('pdf')
-                                    ->acceptedFileTypes(['application/pdf'])
+                                SpatieMediaLibraryFileUpload::make('generated_pdf')
+                                    ->label('Generated PDF')
+                                    ->collection('generated_pdf')
                                     ->downloadable()
                                     ->openable()
+                                    ->acceptedFileTypes(['application/pdf'])
+                                    ->visible(fn ($record) => $record && $record->hasPdf())
+                                    ->disabled()
                                     ->columnSpanFull(),
 
                                 ViewField::make('pdf_preview')
                                     ->label('PDF Preview')
                                     ->view('filament.forms.components.pdf-preview')
                                     ->columnSpanFull()
-                                    ->visible(fn ($record) => $record?->getFirstMedia('pdf') !== null),
+                                    ->visible(fn ($record) => $record && $record->hasPdf()),
                             ]),
                     ])
                     ->columnSpanFull(),
             ]);
     }
 }
-

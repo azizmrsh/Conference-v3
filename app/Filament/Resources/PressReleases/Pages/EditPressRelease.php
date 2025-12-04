@@ -17,4 +17,3 @@ class EditPressRelease extends EditRecord
         ];
     }
 }
-

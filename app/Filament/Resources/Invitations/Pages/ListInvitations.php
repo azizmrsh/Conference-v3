@@ -17,4 +17,3 @@ class ListInvitations extends ListRecords
         ];
     }
 }
-

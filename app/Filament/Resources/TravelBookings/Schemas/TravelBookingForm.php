@@ -3,12 +3,10 @@
 namespace App\Filament\Resources\TravelBookings\Schemas;
 
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 
 class TravelBookingForm
@@ -52,7 +50,7 @@ class TravelBookingForm
                 Section::make('Flight Information')
                     ->icon('heroicon-o-paper-airplane')
                     ->columns(2)
-                    ->visible(fn ($get) => in_array($get('type'), ['arrival_flight','departure_flight']))
+                    ->visible(fn ($get) => in_array($get('type'), ['arrival_flight', 'departure_flight']))
                     ->schema([
                         Select::make('airline_id')
                             ->label('Airline')
@@ -114,4 +112,3 @@ class TravelBookingForm
             ]);
     }
 }
-

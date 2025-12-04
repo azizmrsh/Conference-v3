@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\Correspondence;
-use App\Models\User;
 use Filament\Notifications\Notification;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
@@ -22,6 +21,7 @@ class SendCorrespondenceReminders extends Command
 
         if ($pendingCorrespondences->isEmpty()) {
             $this->info('No pending follow-ups found.');
+
             return Command::SUCCESS;
         }
 
@@ -44,12 +44,12 @@ class SendCorrespondenceReminders extends Command
                 // Optional: Send email notification
                 if ($correspondence->creator->email) {
                     Mail::raw(
-                        "Follow-up reminder for correspondence:\n\n" .
-                        "Subject: {$correspondence->subject}\n" .
-                        "Ref: {$correspondence->ref_number}\n" .
-                        "Category: {$correspondence->category}\n" .
-                        "Follow-up due: {$correspondence->follow_up_at->format('Y-m-d H:i')}\n\n" .
-                        "Please review and take appropriate action.",
+                        "Follow-up reminder for correspondence:\n\n".
+                        "Subject: {$correspondence->subject}\n".
+                        "Ref: {$correspondence->ref_number}\n".
+                        "Category: {$correspondence->category}\n".
+                        "Follow-up due: {$correspondence->follow_up_at->format('Y-m-d H:i')}\n\n".
+                        'Please review and take appropriate action.',
                         function ($message) use ($correspondence) {
                             $message->to($correspondence->creator->email)
                                 ->subject("Follow-up Reminder: {$correspondence->ref_number}");

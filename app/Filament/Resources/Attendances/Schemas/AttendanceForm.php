@@ -61,7 +61,7 @@ class AttendanceForm
                                 'manual' => 'Manual',
                             ])
                             ->default('scan')
-                            ->rule(Rule::in(['scan','manual'])),
+                            ->rule(Rule::in(['scan', 'manual'])),
                         DateTimePicker::make('check_in_at')->label('Check-in Time'),
                         DateTimePicker::make('check_out_at')->label('Check-out Time'),
                     ]),
@@ -74,4 +74,3 @@ class AttendanceForm
             ]);
     }
 }
-

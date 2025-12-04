@@ -9,4 +9,3 @@ class CreateCommittee extends CreateRecord
 {
     protected static string $resource = CommitteeResource::class;
 }
-

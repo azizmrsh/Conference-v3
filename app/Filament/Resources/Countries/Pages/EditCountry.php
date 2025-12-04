@@ -17,4 +17,3 @@ class EditCountry extends EditRecord
         ];
     }
 }
-

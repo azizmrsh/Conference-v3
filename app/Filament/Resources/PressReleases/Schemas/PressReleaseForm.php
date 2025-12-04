@@ -19,19 +19,17 @@ class PressReleaseForm
                     ->icon('heroicon-o-newspaper')
                     ->columns(2)
                     ->schema([
-                        Select::make('media_campaign_id')->label('Media Campaign')->relationship('mediaCampaign','title')->searchable()->preload()->required(),
+                        Select::make('media_campaign_id')->label('Media Campaign')->relationship('mediaCampaign', 'title')->searchable()->preload()->required(),
                         TextInput::make('title')->label('Title')->required(),
                         Textarea::make('content')->label('Content')->columnSpanFull()->required(),
                         Select::make('release_type')->label('Release Type')->options([
-                            'announcement'=>'Announcement','invitation'=>'Invitation','daily_coverage'=>'Daily Coverage','final_statement'=>'Final Statement','follow_up'=>'Follow Up'
+                            'announcement' => 'Announcement', 'invitation' => 'Invitation', 'daily_coverage' => 'Daily Coverage', 'final_statement' => 'Final Statement', 'follow_up' => 'Follow Up',
                         ])->required(),
                         DateTimePicker::make('scheduled_release_time')->label('Scheduled'),
                         DateTimePicker::make('actual_release_time')->label('Actual'),
-                        Select::make('status')->label('Status')->options(['draft'=>'Draft','approved'=>'Approved','sent'=>'Sent','published'=>'Published'])->required(),
-                        Select::make('created_by')->label('Created By')->relationship('creator','name')->searchable()->preload(),
+                        Select::make('status')->label('Status')->options(['draft' => 'Draft', 'approved' => 'Approved', 'sent' => 'Sent', 'published' => 'Published'])->required(),
+                        Select::make('created_by')->label('Created By')->relationship('creator', 'name')->searchable()->preload(),
                     ]),
             ]);
     }
 }
-
-

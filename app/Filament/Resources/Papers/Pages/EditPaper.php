@@ -17,4 +17,3 @@ class EditPaper extends EditRecord
         ];
     }
 }
-

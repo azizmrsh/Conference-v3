@@ -9,4 +9,3 @@ class CreatePressRelease extends CreateRecord
 {
     protected static string $resource = PressReleaseResource::class;
 }
-

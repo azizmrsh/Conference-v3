@@ -9,4 +9,3 @@ class CreateAirport extends CreateRecord
 {
     protected static string $resource = AirportResource::class;
 }
-

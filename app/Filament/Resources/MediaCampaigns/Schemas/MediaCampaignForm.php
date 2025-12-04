@@ -19,13 +19,13 @@ class MediaCampaignForm
                     ->icon('heroicon-o-megaphone')
                     ->columns(2)
                     ->schema([
-                        Select::make('conference_id')->label('Conference')->relationship('conference','title')->searchable()->preload()->required(),
+                        Select::make('conference_id')->label('Conference')->relationship('conference', 'title')->searchable()->preload()->required(),
                         TextInput::make('title')->label('Title')->required(),
                         Select::make('campaign_type')->label('Type')->options([
-                            'pre_conference'=>'Pre Conference','during_conference'=>'During Conference','post_conference'=>'Post Conference'
+                            'pre_conference' => 'Pre Conference', 'during_conference' => 'During Conference', 'post_conference' => 'Post Conference',
                         ])->required(),
-                        Select::make('status')->label('Status')->options(['planning'=>'Planning','active'=>'Active','completed'=>'Completed','cancelled'=>'Cancelled'])->required(),
-                        Select::make('manager_user_id')->label('Manager')->relationship('manager','name')->searchable()->preload(),
+                        Select::make('status')->label('Status')->options(['planning' => 'Planning', 'active' => 'Active', 'completed' => 'Completed', 'cancelled' => 'Cancelled'])->required(),
+                        Select::make('manager_user_id')->label('Manager')->relationship('manager', 'name')->searchable()->preload(),
                     ]),
 
                 Section::make('Planning & Budget')
@@ -42,5 +42,3 @@ class MediaCampaignForm
             ]);
     }
 }
-
-

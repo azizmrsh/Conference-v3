@@ -17,4 +17,3 @@ class EditAttachment extends EditRecord
         ];
     }
 }
-

@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Correspondence;
-use Illuminate\Support\Facades\Storage;
 use Spatie\Browsershot\Browsershot;
 
 class CorrespondencePdfService
@@ -11,7 +10,6 @@ class CorrespondencePdfService
     /**
      * Generate PDF for a correspondence using Browsershot
      *
-     * @param Correspondence $correspondence
      * @return string Path to the generated PDF
      */
     public function generatePdf(Correspondence $correspondence): string
@@ -23,12 +21,12 @@ class CorrespondencePdfService
 
         // Generate filename
         $filename = $this->generateFilename($correspondence);
-        $path = 'pdf/' . $filename;
-        $fullPath = storage_path('app/public/' . $path);
+        $path = 'pdf/'.$filename;
+        $fullPath = storage_path('app/public/'.$path);
 
         // Ensure directory exists
         $directory = dirname($fullPath);
-        if (!file_exists($directory)) {
+        if (! file_exists($directory)) {
             mkdir($directory, 0755, true);
         }
 
@@ -41,21 +39,17 @@ class CorrespondencePdfService
             ->waitUntilNetworkIdle()
             ->save($fullPath);
 
-        // Optionally attach to correspondence media library
-        if (!$correspondence->getFirstMedia('pdf')) {
-            $correspondence
-                ->addMedia($fullPath)
-                ->toMediaCollection('pdf');
-        }
+        // Clear old PDF and attach new one to media library
+        $correspondence->clearMediaCollection('generated_pdf');
+        $correspondence
+            ->addMedia($fullPath)
+            ->toMediaCollection('generated_pdf');
 
         return $path;
     }
 
     /**
      * Generate a unique filename for the PDF
-     *
-     * @param Correspondence $correspondence
-     * @return string
      */
     protected function generateFilename(Correspondence $correspondence): string
     {
@@ -67,13 +61,10 @@ class CorrespondencePdfService
 
     /**
      * Get the PDF path for a correspondence
-     *
-     * @param Correspondence $correspondence
-     * @return string|null
      */
     public function getPdfPath(Correspondence $correspondence): ?string
     {
-        $media = $correspondence->getFirstMedia('pdf');
+        $media = $correspondence->getFirstMedia('generated_pdf');
 
         if ($media) {
             return $media->getPath();
@@ -84,16 +75,14 @@ class CorrespondencePdfService
 
     /**
      * Delete the PDF for a correspondence
-     *
-     * @param Correspondence $correspondence
-     * @return bool
      */
     public function deletePdf(Correspondence $correspondence): bool
     {
-        $media = $correspondence->getFirstMedia('pdf');
+        $media = $correspondence->getFirstMedia('generated_pdf');
 
         if ($media) {
             $media->delete();
+
             return true;
         }
 

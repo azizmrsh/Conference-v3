@@ -8,9 +8,10 @@ use App\Filament\Resources\BadgesKits\Pages\ListBadgesKits;
 use App\Filament\Resources\BadgesKits\Schemas\BadgesKitForm;
 use App\Filament\Resources\BadgesKits\Tables\BadgesKitsTable;
 use App\Models\BadgesKit;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class BadgesKitResource extends Resource
 {
     protected static ?string $model = BadgesKit::class;

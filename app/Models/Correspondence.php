@@ -108,7 +108,7 @@ class Correspondence extends Model implements HasMedia
             ->where('last_of_type', true)
             ->first();
 
-        if (!$last) {
+        if (! $last) {
             return null;
         }
 
@@ -148,10 +148,58 @@ class Correspondence extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('attachments')
-            ->useDisk('public');
+            ->useDisk('public')
+            ->acceptsMimeTypes([
+                'application/pdf',
+                'image/jpeg',
+                'image/png',
+                'image/jpg',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            ])
+            ->maxFilesize(20 * 1024 * 1024); // 20MB
 
-        $this->addMediaCollection('pdf')
+        $this->addMediaCollection('generated_pdf')
             ->singleFile()
-            ->useDisk('public');
+            ->useDisk('public')
+            ->acceptsMimeTypes(['application/pdf']);
+    }
+
+    public function registerMediaConversions(?\Spatie\MediaLibrary\MediaCollections\Models\Media $media = null): void
+    {
+        $this->addMediaConversion('preview')
+            ->width(600)
+            ->height(800)
+            ->sharpen(10)
+            ->performOnCollections('attachments', 'generated_pdf')
+            ->nonQueued();
+
+        $this->addMediaConversion('thumb')
+            ->width(200)
+            ->height(200)
+            ->sharpen(10)
+            ->performOnCollections('attachments')
+            ->nonQueued();
+    }
+
+    // Media Helper Methods
+    public function latestPdf(): ?string
+    {
+        return $this->getFirstMediaUrl('generated_pdf');
+    }
+
+    public function hasPdf(): bool
+    {
+        return $this->getFirstMedia('generated_pdf') !== null;
+    }
+
+    public function hasAttachments(): bool
+    {
+        return $this->getMedia('attachments')->count() > 0;
+    }
+
+    public function getAttachmentsCount(): int
+    {
+        return $this->getMedia('attachments')->count();
     }
 }

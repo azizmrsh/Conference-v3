@@ -17,4 +17,3 @@ class EditTask extends EditRecord
         ];
     }
 }
-

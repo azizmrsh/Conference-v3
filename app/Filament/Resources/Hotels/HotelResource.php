@@ -8,9 +8,10 @@ use App\Filament\Resources\Hotels\Pages\ListHotels;
 use App\Filament\Resources\Hotels\Schemas\HotelForm;
 use App\Filament\Resources\Hotels\Tables\HotelsTable;
 use App\Models\Hotel;
-use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
+
 class HotelResource extends Resource
 {
     protected static ?string $model = Hotel::class;

@@ -17,4 +17,3 @@ class EditAirport extends EditRecord
         ];
     }
 }
-

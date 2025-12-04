@@ -28,7 +28,7 @@ class EditInvitation extends EditRecord
             ]);
         }
 
-        if (!empty($data['expected_arrival']) && !empty($data['expected_departure'])) {
+        if (! empty($data['expected_arrival']) && ! empty($data['expected_departure'])) {
             $arr = Carbon::parse($data['expected_arrival']);
             $dep = Carbon::parse($data['expected_departure']);
             if ($dep->lt($arr)) {
@@ -38,9 +38,9 @@ class EditInvitation extends EditRecord
             }
         }
 
-        if (!empty($data['member_id'])) {
+        if (! empty($data['member_id'])) {
             $member = Member::with('nationality')->find($data['member_id']);
-            if ($member && $member->nationality && !$member->nationality->visa_required_for_jordan) {
+            if ($member && $member->nationality && ! $member->nationality->visa_required_for_jordan) {
                 $data['needs_visa'] = false;
             }
         }
@@ -48,4 +48,3 @@ class EditInvitation extends EditRecord
         return $data;
     }
 }
-
