@@ -16,5 +16,13 @@ class EditCorrespondence extends EditRecord
             DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        // Auto-set updated_by
+        $data['updated_by'] = auth()->id();
+
+        return $data;
+    }
 }
 

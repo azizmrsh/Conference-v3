@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Correspondences;
 use App\Filament\Resources\Correspondences\Pages\CreateCorrespondence;
 use App\Filament\Resources\Correspondences\Pages\EditCorrespondence;
 use App\Filament\Resources\Correspondences\Pages\ListCorrespondences;
+use App\Filament\Resources\Correspondences\Pages\ViewCorrespondence;
 use App\Filament\Resources\Correspondences\Schemas\CorrespondenceForm;
 use App\Filament\Resources\Correspondences\Tables\CorrespondencesTable;
 use App\Models\Correspondence;
@@ -14,6 +15,8 @@ use Filament\Tables\Table;
 class CorrespondenceResource extends Resource
 {
     protected static ?string $model = Correspondence::class;
+
+    protected static ?string $slug = 'correspondences';
 
     protected static ?string $navigationIcon = 'heroicon-o-inbox';
 
@@ -38,6 +41,7 @@ class CorrespondenceResource extends Resource
         return [
             'index' => ListCorrespondences::route('/'),
             'create' => CreateCorrespondence::route('/create'),
+            'view' => ViewCorrespondence::route('/{record}'),
             'edit' => EditCorrespondence::route('/{record}/edit'),
         ];
     }
