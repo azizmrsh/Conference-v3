@@ -10,7 +10,7 @@ class Member extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name', 'last_name', 'honorific_title', 'academic_title', 'type', 'membership_date', 'nationality_id', 'passport_number', 'passport_expiry', 'email', 'phone', 'cv_text', 'photo_path', 'is_active',
+        'full_name', 'type', 'membership_date', 'nationality_id', 'passport_number', 'passport_expiry', 'email', 'phone', 'fax', 'bio', 'photo_path', 'is_active',
     ];
 
     protected $casts = [

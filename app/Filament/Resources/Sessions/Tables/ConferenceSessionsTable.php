@@ -40,7 +40,7 @@ class ConferenceSessionsTable
                 TextColumn::make('hall_name')
                     ->label('Hall')
                     ->searchable(),
-                TextColumn::make('chair.first_name')
+                TextColumn::make('chair.full_name')
                     ->label('Chair')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),

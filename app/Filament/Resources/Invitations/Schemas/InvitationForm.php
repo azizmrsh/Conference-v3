@@ -23,13 +23,13 @@ class InvitationForm
                     ->schema([
                         Select::make('conference_id')
                             ->label('Conference')
-                            ->relationship('conference', 'title_ar')
+                            ->relationship('conference', 'title')
                             ->searchable()
                             ->preload()
                             ->required(),
                         Select::make('member_id')
                             ->label('Member')
-                            ->relationship('member', 'first_name_ar')
+                            ->relationship('member', 'full_name')
                             ->searchable()
                             ->preload()
                             ->required(),

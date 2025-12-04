@@ -25,7 +25,7 @@ class CommitteeMemberForm
                             ->required(),
                         Select::make('member_id')
                             ->label('Member')
-                            ->relationship('member', 'first_name_ar')
+                            ->relationship('member', 'full_name')
                             ->searchable()
                             ->preload()
                             ->required(),

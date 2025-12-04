@@ -63,7 +63,7 @@ class SessionsRelationManager extends RelationManager
 
                 Select::make('chair_member_id')
                     ->label('Session Chair')
-                    ->relationship('chair', 'first_name')
+                    ->relationship('chair', 'full_name')
                     ->searchable()
                     ->preload()
                     ->columnSpan(1),
@@ -112,7 +112,7 @@ class SessionsRelationManager extends RelationManager
                     ->searchable()
                     ->toggleable(),
 
-                TextColumn::make('chair.first_name')
+                TextColumn::make('chair.full_name')
                     ->label('Chair')
                     ->toggleable(isToggledHiddenByDefault: true),
 

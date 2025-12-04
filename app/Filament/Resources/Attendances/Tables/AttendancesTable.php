@@ -16,7 +16,7 @@ class AttendancesTable
             ->columns([
                 TextColumn::make('conference.title_ar')->label('Conference'),
                 TextColumn::make('session.title_ar')->label('Session'),
-                TextColumn::make('member.first_name_ar')->label('Member'),
+                TextColumn::make('member.full_name')->label('Member'),
                 TextColumn::make('check_in_at')->dateTime()->label('Check-in'),
                 TextColumn::make('check_out_at')->dateTime()->label('Check-out'),
                 TextColumn::make('method')->label('Method'),

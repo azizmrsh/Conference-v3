@@ -49,7 +49,7 @@ class ConferenceSessionForm
                     ->schema([
                         Select::make('chair_member_id')
                             ->label('Session Chair')
-                            ->relationship('chair', 'first_name')
+                            ->relationship('chair', 'full_name')
                             ->searchable()
                             ->preload(),
                         TextInput::make('session_order')->numeric()->minValue(0)->default(0)->label('Order'),

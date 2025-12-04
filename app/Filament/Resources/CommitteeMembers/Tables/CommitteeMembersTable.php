@@ -18,7 +18,7 @@ class CommitteeMembersTable
                     ->label('Committee')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('member.first_name_ar')
+                TextColumn::make('member.full_name')
                     ->label('Member')
                     ->searchable()
                     ->sortable(),

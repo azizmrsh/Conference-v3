@@ -18,7 +18,7 @@ class MemberResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $recordTitleAttribute = 'first_name_ar';
+    protected static ?string $recordTitleAttribute = 'full_name';
 
     protected static ?string $navigationGroup = 'Pre-Conference';
 

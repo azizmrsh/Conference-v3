@@ -15,11 +15,8 @@ class MembersTable
     {
         return $table
             ->columns([
-                TextColumn::make('first_name')
-                    ->label('First Name')
-                    ->searchable(),
-                TextColumn::make('last_name')
-                    ->label('Last Name')
+                TextColumn::make('full_name')
+                    ->label('الاسم الكامل')
                     ->searchable(),
                 TextColumn::make('email')->searchable(),
                 TextColumn::make('phone')->label('Phone'),

@@ -39,7 +39,7 @@ class AttendanceForm
                     ->schema([
                         Select::make('member_id')
                             ->label('Member')
-                            ->relationship('member', 'first_name_ar')
+                            ->relationship('member', 'full_name')
                             ->searchable()
                             ->preload(),
                         Select::make('invitation_id')

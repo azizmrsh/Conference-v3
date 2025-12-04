@@ -15,7 +15,7 @@ class CorrespondencesTable
         return $table
             ->columns([
                 TextColumn::make('ref_number')->label('Ref No.')->searchable(),
-                TextColumn::make('conference.title_ar')->label('Conference'),
+                TextColumn::make('conference.title')->label('Conference'),
                 TextColumn::make('category')->label('Category'),
                 TextColumn::make('status')->label('Status'),
                 TextColumn::make('correspondence_date')->date()->label('Date')->sortable(),

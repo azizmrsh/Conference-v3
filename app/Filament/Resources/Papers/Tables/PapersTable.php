@@ -14,7 +14,7 @@ class PapersTable
     {
         return $table
             ->columns([
-                TextColumn::make('invitation.member.first_name')->label('Author'),
+                TextColumn::make('invitation.member.full_name')->label('Author'),
                 TextColumn::make('title')->label('Title')->searchable(),
                 TextColumn::make('status')->label('Status')->badge(),
                 TextColumn::make('submitted_at')->dateTime()->label('Submitted At'),

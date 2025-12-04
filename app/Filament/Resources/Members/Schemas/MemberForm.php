@@ -21,11 +21,13 @@ class MemberForm
                     ->icon('heroicon-o-user')
                     ->columns(2)
                     ->schema([
-                        TextInput::make('first_name')->label('First Name')->required(),
-                        TextInput::make('last_name')->label('Last Name')->required(),
-                        TextInput::make('honorific_title')->label('Honorific Title'),
-                        TextInput::make('academic_title')->label('Academic Title'),
-                        TextInput::make('photo_path')->label('Photo Path')->columnSpanFull(),
+                        TextInput::make('full_name')
+                            ->label('full name with (honorific title or academic title)')
+                            ->required()
+                            ->columnSpanFull(),
+                        TextInput::make('photo_path')
+                            ->label('Photo Path')
+                            ->columnSpanFull(),
                     ]),
 
                 Section::make('Membership Details')
@@ -66,9 +68,20 @@ class MemberForm
                     ->icon('heroicon-o-phone')
                     ->columns(2)
                     ->schema([
-                        TextInput::make('email')->email()->prefixIcon('heroicon-m-envelope'),
-                        TextInput::make('phone')->tel()->prefixIcon('heroicon-m-phone'),
-                        Textarea::make('cv_text')->label('CV')->columnSpanFull(),
+                        TextInput::make('email')
+                            ->email()
+                            ->prefixIcon('heroicon-m-envelope'),
+                        TextInput::make('phone')
+                            ->tel()
+                            ->prefixIcon('heroicon-m-phone'),
+                        TextInput::make('fax')
+                            ->label('Fax')
+                            ->tel()
+                            ->prefixIcon('heroicon-m-printer'),
+                        Textarea::make('bio')
+                            ->label('Bio')
+                            ->rows(4)
+                            ->columnSpanFull(),
                     ]),
             ]);
     }
