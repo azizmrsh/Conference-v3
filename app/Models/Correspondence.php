@@ -156,8 +156,7 @@ class Correspondence extends Model implements HasMedia
                 'image/jpg',
                 'application/msword',
                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-            ])
-            ->maxFilesize(20 * 1024 * 1024); // 20MB
+            ]);
 
         $this->addMediaCollection('generated_pdf')
             ->singleFile()

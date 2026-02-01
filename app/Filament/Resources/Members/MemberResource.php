@@ -24,6 +24,8 @@ class MemberResource extends Resource
 
     protected static ?int $navigationSort = 150;
 
+    protected static ?string $slug = 'members';
+
     public static function form(Form $form): Form
     {
         return MemberForm::configure($form);

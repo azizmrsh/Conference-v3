@@ -17,10 +17,23 @@ return new class extends Migration
 
             $table->index('conference_id');
         });
+        
+        // Add topic_id to conference_sessions after topics table is created
+        Schema::table('conference_sessions', function (Blueprint $table) {
+            $table->foreignId('topic_id')->nullable()->after('conference_id')->constrained('conference_topics')->nullOnDelete();
+            $table->index('topic_id');
+        });
     }
 
     public function down(): void
     {
+        // Drop topic_id from conference_sessions first
+        Schema::table('conference_sessions', function (Blueprint $table) {
+            $table->dropForeign(['topic_id']);
+            $table->dropIndex(['topic_id']);
+            $table->dropColumn('topic_id');
+        });
+        
         Schema::dropIfExists('conference_topics');
     }
 };

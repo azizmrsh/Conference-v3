@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\Correspondences\Pages;
 
+use App\Filament\Resources\Conferences\ConferenceResource;
 use App\Filament\Resources\Correspondences\CorrespondenceResource;
+use App\Filament\Resources\Members\MemberResource;
 use App\Mail\CorrespondenceSent;
 use App\Services\CorrespondencePdfService;
 use Filament\Actions;
@@ -67,12 +69,12 @@ class ViewCorrespondence extends ViewRecord
                     ->schema([
                         Infolists\Components\TextEntry::make('conference.title')
                             ->label('Conference')
-                            ->default('N/A')
-                            ->url(fn ($record) => $record->conference_id ? route('filament.admin.resources.conferences.view', ['record' => $record->conference_id]) : null),
+                            ->placeholder('N/A')
+                            ->url(fn ($record) => $record->conference_id ? ConferenceResource::getUrl('view', ['record' => $record->conference_id]) : null),
                         Infolists\Components\TextEntry::make('member.full_name')
                             ->label('Member')
-                            ->default('N/A')
-                            ->url(fn ($record) => $record->member_id ? route('filament.admin.resources.members.view', ['record' => $record->member_id]) : null),
+                            ->placeholder('N/A')
+                            ->url(fn ($record) => $record->member_id ? MemberResource::getUrl('edit', ['record' => $record->member_id]) : null),
                     ]),
 
                 Infolists\Components\Section::make('Content')
@@ -111,7 +113,7 @@ class ViewCorrespondence extends ViewRecord
                     ->columns(2)
                     ->visible(fn ($record) => $record->response_received)
                     ->schema([
-                        Infolists\Components\TextEntry::make('response_received')
+                        Infolists\Components\IconEntry::make('response_received')
                             ->label('Response Received')
                             ->boolean(),
                         Infolists\Components\TextEntry::make('response_date')
@@ -135,14 +137,14 @@ class ViewCorrespondence extends ViewRecord
                             ->dateTime(),
                         Infolists\Components\TextEntry::make('updater.name')
                             ->label('Last Updated By')
-                            ->default('N/A'),
+                            ->placeholder('N/A'),
                         Infolists\Components\TextEntry::make('updated_at')
                             ->label('Updated At')
                             ->dateTime(),
                         Infolists\Components\TextEntry::make('last_sent_at')
                             ->label('Last Sent At')
                             ->dateTime()
-                            ->default('N/A'),
+                            ->placeholder('N/A'),
                     ]),
             ]);
     }
@@ -158,14 +160,18 @@ class ViewCorrespondence extends ViewRecord
                 ->color('success')
                 ->action(function () {
                     $pdfService = new CorrespondencePdfService;
-                    $pdfPath = $pdfService->generatePdf($this->record);
+                    $pdfService->generatePdf($this->record);
+
+                    $media = $this->record->getFirstMedia('generated_pdf');
 
                     Notification::make()
                         ->title('PDF Generated Successfully')
                         ->success()
                         ->send();
 
-                    return response()->download(storage_path('app/public/'.$pdfPath));
+                    if ($media) {
+                        return response()->download($media->getPath(), $media->file_name);
+                    }
                 }),
 
             Actions\Action::make('sendEmail')

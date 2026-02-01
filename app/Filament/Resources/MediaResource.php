@@ -28,6 +28,9 @@ class MediaResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Media Library';
 
+    // إخفاء من القائمة الجانبية (سنستخدم Media Manager Plugin بدلاً منه)
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Form $form): Form
     {
         return $form

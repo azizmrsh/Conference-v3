@@ -27,6 +27,8 @@ class ConferenceResource extends Resource
 
     protected static ?int $navigationSort = 110;
 
+    protected static ?string $slug = 'conferences';
+
     public static function form(Form $form): Form
     {
         return ConferenceForm::configure($form);

@@ -9,10 +9,7 @@ return new class extends Migration {
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('honorific_title')->nullable();
-            $table->string('academic_title')->nullable();
+            $table->string('full_name');
             $table->enum('type', ['working_member','correspondent_member','honorary_member','guest_speaker','staff','journalist']);
             $table->date('membership_date')->nullable();
             $table->foreignId('nationality_id')->nullable()->constrained('countries')->nullOnDelete();
@@ -20,10 +17,13 @@ return new class extends Migration {
             $table->date('passport_expiry')->nullable();
             $table->string('email')->nullable();
             $table->string('phone', 100)->nullable();
-            $table->text('cv_text')->nullable();
+            $table->string('fax', 100)->nullable();
+            $table->text('bio')->nullable();
             $table->string('photo_path', 1024)->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
+            
+            // Indexes
             $table->index('email');
         });
     }

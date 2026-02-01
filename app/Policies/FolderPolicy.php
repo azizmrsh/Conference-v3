@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Attachment;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use TomatoPHP\FilamentMediaManager\Models\Folder;
 
-class AttachmentPolicy
+class FolderPolicy
 {
     use HandlesAuthorization;
 
@@ -15,15 +15,15 @@ class AttachmentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_attachments::attachment');
+        return $user->can('view_any_folder');
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Attachment $attachment): bool
+    public function view(User $user, Folder $folder): bool
     {
-        return $user->can('view_attachments::attachment');
+        return $user->can('view_folder');
     }
 
     /**
@@ -31,23 +31,23 @@ class AttachmentPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_attachments::attachment');
+        return $user->can('create_folder');
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Attachment $attachment): bool
+    public function update(User $user, Folder $folder): bool
     {
-        return $user->can('update_attachments::attachment');
+        return $user->can('update_folder');
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Attachment $attachment): bool
+    public function delete(User $user, Folder $folder): bool
     {
-        return $user->can('delete_attachments::attachment');
+        return $user->can('delete_folder');
     }
 
     /**
@@ -55,15 +55,15 @@ class AttachmentPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_attachments::attachment');
+        return $user->can('delete_any_folder');
     }
 
     /**
      * Determine whether the user can permanently delete.
      */
-    public function forceDelete(User $user, Attachment $attachment): bool
+    public function forceDelete(User $user, Folder $folder): bool
     {
-        return $user->can('force_delete_attachments::attachment');
+        return $user->can('force_delete_folder');
     }
 
     /**
@@ -71,15 +71,15 @@ class AttachmentPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_attachments::attachment');
+        return $user->can('force_delete_any_folder');
     }
 
     /**
      * Determine whether the user can restore.
      */
-    public function restore(User $user, Attachment $attachment): bool
+    public function restore(User $user, Folder $folder): bool
     {
-        return $user->can('restore_attachments::attachment');
+        return $user->can('restore_folder');
     }
 
     /**
@@ -87,15 +87,15 @@ class AttachmentPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_attachments::attachment');
+        return $user->can('restore_any_folder');
     }
 
     /**
      * Determine whether the user can replicate.
      */
-    public function replicate(User $user, Attachment $attachment): bool
+    public function replicate(User $user, Folder $folder): bool
     {
-        return $user->can('replicate_attachments::attachment');
+        return $user->can('replicate_folder');
     }
 
     /**
@@ -103,6 +103,6 @@ class AttachmentPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_attachments::attachment');
+        return $user->can('reorder_folder');
     }
 }

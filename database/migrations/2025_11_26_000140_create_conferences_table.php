@@ -11,20 +11,21 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->integer('session_number')->nullable();
-            $table->string('hijri_year', 20)->nullable();
-            $table->integer('gregorian_year')->nullable();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('location')->nullable();
             $table->string('venue_name')->nullable();
             $table->string('venue_address', 512)->nullable();
-            $table->text('themes')->nullable();
-            $table->text('description')->nullable();
+            $table->dateTime('hijri_date')->nullable();
+            $table->dateTime('gregorian_date')->nullable();
+            $table->integer('sessions_count')->default(0);
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->enum('status', ['planning','active','completed','archived'])->default('planning');
-            $table->string('logo_path', 1024)->nullable();
+            $table->text('description')->nullable();
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
-            $table->index('gregorian_year');
+            
+            // Indexes
             $table->index(['start_date','end_date']);
             $table->index('status');
         });

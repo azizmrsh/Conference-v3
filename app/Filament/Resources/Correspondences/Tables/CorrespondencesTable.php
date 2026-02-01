@@ -276,14 +276,18 @@ class CorrespondencesTable
                     ->color('success')
                     ->action(function ($record) {
                         $pdfService = new CorrespondencePdfService;
-                        $pdfPath = $pdfService->generatePdf($record);
+                        $pdfService->generatePdf($record);
+
+                        $media = $record->getFirstMedia('generated_pdf');
 
                         Notification::make()
                             ->title('PDF Generated')
                             ->success()
                             ->send();
 
-                        return response()->download(storage_path('app/public/'.$pdfPath));
+                        if ($media) {
+                            return response()->download($media->getPath(), $media->file_name);
+                        }
                     }),
 
                 Action::make('sendEmail')

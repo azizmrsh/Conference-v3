@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use TomatoPHP\FilamentMediaManager\Models\Media;
 
 class MediaPolicy
 {

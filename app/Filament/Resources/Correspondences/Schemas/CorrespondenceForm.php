@@ -225,6 +225,27 @@ class CorrespondenceForm
                                         Action::make('loadLastContent')
                                             ->label('Load Last Content')
                                             ->icon('heroicon-o-arrow-path')
+                                            ->color(function (Get $get) {
+                                                $category = $get('category');
+                                                if (! $category) {
+                                                    return 'gray';
+                                                }
+                                                $hasLast = Correspondence::where('category', $category)
+                                                    ->where('last_of_type', true)
+                                                    ->exists();
+
+                                                return $hasLast ? 'primary' : 'gray';
+                                            })
+                                            ->disabled(function (Get $get) {
+                                                $category = $get('category');
+                                                if (! $category) {
+                                                    return true;
+                                                }
+
+                                                return ! Correspondence::where('category', $category)
+                                                    ->where('last_of_type', true)
+                                                    ->exists();
+                                            })
                                             ->action(function (Set $set, Get $get) {
                                                 $category = $get('category');
                                                 if (! $category) {

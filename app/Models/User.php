@@ -75,11 +75,6 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(ConferenceSession::class, 'created_by');
     }
 
-    public function uploadedAttachments()
-    {
-        return $this->hasMany(Attachment::class, 'uploaded_by');
-    }
-
     public function createdCorrespondences()
     {
         return $this->hasMany(Correspondence::class, 'created_by');
