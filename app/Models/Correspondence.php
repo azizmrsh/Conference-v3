@@ -18,6 +18,7 @@ class Correspondence extends Model implements HasMedia
         'conference_id',
         'member_id',
         'created_by',
+        'updated_by',
         'direction',
         'category',
         'workflow_group',
@@ -77,6 +78,11 @@ class Correspondence extends Model implements HasMedia
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    public function updater()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
+
     // Scopes
     public function scopeLastOfType($query, string $category)
     {
@@ -108,7 +114,7 @@ class Correspondence extends Model implements HasMedia
             ->where('last_of_type', true)
             ->first();
 
-        if (! $last) {
+        if (!$last) {
             return null;
         }
 

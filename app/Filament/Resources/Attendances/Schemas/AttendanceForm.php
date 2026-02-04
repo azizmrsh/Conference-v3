@@ -22,13 +22,13 @@ class AttendanceForm
                     ->schema([
                         Select::make('conference_id')
                             ->label('Conference')
-                            ->relationship('conference', 'title_ar')
+                            ->relationship('conference', 'title')
                             ->searchable()
                             ->preload()
                             ->required(),
                         Select::make('conference_session_id')
                             ->label('Session')
-                            ->relationship('session', 'title_ar')
+                            ->relationship('session', 'session_title')
                             ->searchable()
                             ->preload(),
                     ]),

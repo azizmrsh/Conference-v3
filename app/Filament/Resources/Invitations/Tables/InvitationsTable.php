@@ -15,7 +15,7 @@ class InvitationsTable
     {
         return $table
             ->columns([
-                TextColumn::make('conference.title_ar')->label('Conference')->searchable(),
+                TextColumn::make('conference.title')->label('Conference')->searchable(),
                 TextColumn::make('member.full_name')->label('Member')->searchable(),
                 TextColumn::make('role')->label('Role')->badge(),
                 TextColumn::make('status')->label('Status')->badge(),

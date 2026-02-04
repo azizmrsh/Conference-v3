@@ -21,10 +21,13 @@ class ReviewForm
                     ->icon('heroicon-o-clipboard-document-list')
                     ->columns(3)
                     ->schema([
-                        Select::make('paper_id')->label('Paper')->relationship('paper', 'title_ar')->searchable()->preload()->required(),
+                        Select::make('paper_id')->label('Paper')->relationship('paper', 'title')->searchable()->preload()->required(),
                         Select::make('reviewer_user_id')->label('Reviewer')->relationship('reviewer', 'name')->searchable()->preload(),
                         Select::make('review_type')->label('Type')->options([
-                            'scientific_review' => 'Scientific', 'linguistic_review' => 'Linguistic', 'technical_review' => 'Technical', 'final_review' => 'Final',
+                            'scientific_review' => 'Scientific',
+                            'linguistic_review' => 'Linguistic',
+                            'technical_review' => 'Technical',
+                            'final_review' => 'Final',
                         ])->required(),
                         TextInput::make('review_round')->label('Round')->numeric()->minValue(1)->default(1),
                         DateTimePicker::make('assigned_at')->label('Assigned At')->required(),

@@ -175,7 +175,7 @@ class CorrespondenceForm
                                             ->label('Response Date')
                                             ->native(false)
                                             ->displayFormat('d/m/Y')
-                                            ->visible(fn (Get $get) => $get('response_received')),
+                                            ->visible(fn(Get $get) => $get('response_received')),
                                     ]),
                             ]),
 
@@ -227,7 +227,7 @@ class CorrespondenceForm
                                             ->icon('heroicon-o-arrow-path')
                                             ->color(function (Get $get) {
                                                 $category = $get('category');
-                                                if (! $category) {
+                                                if (!$category) {
                                                     return 'gray';
                                                 }
                                                 $hasLast = Correspondence::where('category', $category)
@@ -238,17 +238,17 @@ class CorrespondenceForm
                                             })
                                             ->disabled(function (Get $get) {
                                                 $category = $get('category');
-                                                if (! $category) {
+                                                if (!$category) {
                                                     return true;
                                                 }
 
-                                                return ! Correspondence::where('category', $category)
+                                                return !Correspondence::where('category', $category)
                                                     ->where('last_of_type', true)
                                                     ->exists();
                                             })
                                             ->action(function (Set $set, Get $get) {
                                                 $category = $get('category');
-                                                if (! $category) {
+                                                if (!$category) {
                                                     return;
                                                 }
 
@@ -284,20 +284,20 @@ class CorrespondenceForm
                                 DateTimePicker::make('follow_up_at')
                                     ->label('Follow-up Date & Time')
                                     ->native(false)
-                                    ->visible(fn (Get $get) => $get('requires_follow_up'))
+                                    ->visible(fn(Get $get) => $get('requires_follow_up'))
                                     ->suffixActions([
                                         Action::make('add1Day')
                                             ->label('+1 Day')
                                             ->icon('heroicon-o-plus-circle')
-                                            ->action(fn (Set $set) => $set('follow_up_at', now()->addDay())),
+                                            ->action(fn(Set $set) => $set('follow_up_at', now()->addDay())),
                                         Action::make('add1Week')
                                             ->label('+1 Week')
                                             ->icon('heroicon-o-plus-circle')
-                                            ->action(fn (Set $set) => $set('follow_up_at', now()->addWeek())),
+                                            ->action(fn(Set $set) => $set('follow_up_at', now()->addWeek())),
                                         Action::make('add1Month')
                                             ->label('+1 Month')
                                             ->icon('heroicon-o-plus-circle')
-                                            ->action(fn (Set $set) => $set('follow_up_at', now()->addMonth())),
+                                            ->action(fn(Set $set) => $set('follow_up_at', now()->addMonth())),
                                     ]),
                             ]),
 
@@ -336,7 +336,7 @@ class CorrespondenceForm
                                     ->downloadable()
                                     ->openable()
                                     ->acceptedFileTypes(['application/pdf'])
-                                    ->visible(fn ($record) => $record && $record->hasPdf())
+                                    ->visible(fn($record) => $record && $record->hasPdf())
                                     ->disabled()
                                     ->columnSpanFull(),
 
@@ -344,7 +344,8 @@ class CorrespondenceForm
                                     ->label('PDF Preview')
                                     ->view('filament.forms.components.pdf-preview')
                                     ->columnSpanFull()
-                                    ->visible(fn ($record) => $record && $record->hasPdf()),
+                                    ->visible(fn($record) => $record && $record->hasPdf())
+                                    ->dehydrated(false),
                             ]),
                     ])
                     ->columnSpanFull(),

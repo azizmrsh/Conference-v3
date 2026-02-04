@@ -18,7 +18,7 @@ class PressReleaseResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
-    protected static ?string $recordTitleAttribute = 'title_ar';
+    protected static ?string $recordTitleAttribute = 'title';
 
     protected static ?string $navigationGroup = 'Media & Archiving';
 

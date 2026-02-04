@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->foreignId('conference_id')->nullable()->constrained('conferences')->nullOnDelete();
             $table->foreignId('member_id')->nullable()->constrained('members')->nullOnDelete();
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
 
             $table->enum('direction', ['outgoing', 'incoming'])->default('outgoing');
             $table->enum('category', [

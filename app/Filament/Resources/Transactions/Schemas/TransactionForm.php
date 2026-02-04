@@ -19,7 +19,7 @@ class TransactionForm
                     ->icon('heroicon-o-banknotes')
                     ->columns(2)
                     ->schema([
-                        Select::make('conference_id')->label('Conference')->relationship('conference', 'title_ar')->searchable()->preload()->required(),
+                        Select::make('conference_id')->label('Conference')->relationship('conference', 'title')->searchable()->preload()->required(),
                         Select::make('tx_type')->label('Type')->options(['budget_item' => 'Budget Item', 'expense' => 'Expense', 'payment' => 'Payment'])->required(),
                         TextInput::make('category')->label('Category'),
                         TextInput::make('item_name')->label('Item Name')->required(),

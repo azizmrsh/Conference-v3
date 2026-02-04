@@ -14,7 +14,7 @@ class BadgesKitsTable
     {
         return $table
             ->columns([
-                TextColumn::make('conference.title_ar')->label('Conference'),
+                TextColumn::make('conference.title')->label('Conference'),
                 TextColumn::make('item_type')->label('Type'),
                 TextColumn::make('quantity')->label('Quantity')->sortable(),
                 TextColumn::make('cost_per_item')->label('Cost/Item')->sortable(),

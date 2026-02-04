@@ -14,7 +14,7 @@ class ReviewsTable
     {
         return $table
             ->columns([
-                TextColumn::make('paper.title_ar')->label('Paper'),
+                TextColumn::make('paper.title')->label('Paper'),
                 TextColumn::make('reviewer.name')->label('Reviewer'),
                 TextColumn::make('review_type')->label('Type')->badge(),
                 TextColumn::make('status')->label('Status')->badge(),
