@@ -14,7 +14,7 @@ class CommitteeMembersTable
     {
         return $table
             ->columns([
-                TextColumn::make('committee.name_ar')
+                TextColumn::make('committee.name')
                     ->label('Committee')
                     ->searchable()
                     ->sortable(),

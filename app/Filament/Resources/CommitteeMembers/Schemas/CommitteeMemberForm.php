@@ -19,7 +19,7 @@ class CommitteeMemberForm
                     ->schema([
                         Select::make('committee_id')
                             ->label('Committee')
-                            ->relationship('committee', 'name_ar')
+                            ->relationship('committee', 'name')
                             ->searchable()
                             ->preload()
                             ->required(),

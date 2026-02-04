@@ -50,11 +50,11 @@ class TravelBookingForm
                 Section::make('Flight Information')
                     ->icon('heroicon-o-paper-airplane')
                     ->columns(2)
-                    ->visible(fn ($get) => in_array($get('type'), ['arrival_flight', 'departure_flight']))
+                    ->visible(fn($get) => in_array($get('type'), ['arrival_flight', 'departure_flight']))
                     ->schema([
                         Select::make('airline_id')
                             ->label('Airline')
-                            ->relationship('airline', 'name_ar')
+                            ->relationship('airline', 'name')
                             ->searchable()
                             ->preload(),
                         TextInput::make('flight_number')->label('Flight Number'),
@@ -62,12 +62,12 @@ class TravelBookingForm
                         DateTimePicker::make('flight_time')->label('Flight Time'),
                         Select::make('airport_from_id')
                             ->label('Departure Airport')
-                            ->relationship('airportFrom', 'name_ar')
+                            ->relationship('airportFrom', 'name')
                             ->searchable()
                             ->preload(),
                         Select::make('airport_to_id')
                             ->label('Arrival Airport')
-                            ->relationship('airportTo', 'name_ar')
+                            ->relationship('airportTo', 'name')
                             ->searchable()
                             ->preload(),
                         TextInput::make('ticket_number')->label('Ticket Number'),
@@ -77,11 +77,11 @@ class TravelBookingForm
                 Section::make('Hotel Information')
                     ->icon('heroicon-o-building-office')
                     ->columns(2)
-                    ->visible(fn ($get) => $get('type') === 'hotel')
+                    ->visible(fn($get) => $get('type') === 'hotel')
                     ->schema([
                         Select::make('hotel_id')
                             ->label('Hotel')
-                            ->relationship('hotel', 'name_ar')
+                            ->relationship('hotel', 'name')
                             ->searchable()
                             ->preload(),
                         Select::make('room_type')
